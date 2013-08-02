@@ -57,21 +57,40 @@ class Link
 			$code = $this->shortener->int($id)->convert();
 			return $code;
 		} else {
-			throw new Exception("We couldn't save your link. Sorry.");
+			throw new \Exception("We couldn't save your link. Sorry.");
 			return false;
 		}
 	}
 
+	private function startsWithHttp($url)
+	{
+		return substr($url, 0, 7) === "http://";
+	}
+	
+	private function startsWithHttps($url)
+	{
+		return substr($url, 0, 8) === "https://";
+	}
+
+	private function checkForUrlScheme($url)
+	{
+		if (!$this->startsWithHttp($url) && !$this->startsWithHttps($url))
+			$url = "http://".$url;
+
+		return $url;
+	}
+
 	private function filterUrl($url)
 	{
+		$url = $this->checkForUrlScheme($url);
 		$filtered_url = filter_var($url, FILTER_VALIDATE_URL);
 		
 		if ($filtered_url === false) {
-			throw new Exception("Invalid url.");
+			throw new \Exception("Invalid url.");
 			return false;
 		}
 		
-		return $filtered_url;
+		return $url;
 	}
 	
 	private function saveUrl($url)

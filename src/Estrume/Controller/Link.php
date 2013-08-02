@@ -21,9 +21,8 @@ class Link
 		echo $this->view->render("shortener/index.html", array());
 	}
 	
-	public function shorten()
+	public function shorten($url)
 	{
-		$url = $_POST['url'];
 		$shortened = $this->model->shorten($url);
 		echo $this->view->render("shortener/result.html", array("shortened" => $shortened));
 	}

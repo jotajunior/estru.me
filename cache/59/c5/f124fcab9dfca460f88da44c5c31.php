@@ -18,18 +18,18 @@ class __TwigTemplate_59c5f124fcab9dfca460f88da44c5c31 extends Twig_Template
         // line 1
         $this->env->loadTemplate("header.html")->display($context);
         // line 2
-        echo "<div class=\"row\">
+        echo "<form action=\"/estru.me/index.php/shorten\" method=\"POST\">
+<div class=\"row\">
   <div class=\"col-lg-6\">
     <div class=\"input-group\">
-    <form action=\"http://localhost/estru.me/index.php/shorten\" method=\"POST\">
-      <input type=\"text\" class=\"form-control\" id=\"url\">
+      <input type=\"text\" class=\"form-control\" id=\"url\" name=\"url\">
       <span class=\"input-group-btn\">
-        <button class=\"btn btn-default\" type=\"submit\" id=\"sender\">Encurtar!</button>
+        <input class=\"btn btn-default\" type=\"submit\" id=\"sender\" value=\"Encurtar!\"/>
       </span>
-    </form>
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
 </div><!-- /.row -->
+</form>
 ";
         // line 14
         $this->env->loadTemplate("footer.html")->display($context);

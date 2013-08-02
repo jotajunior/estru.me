@@ -21,7 +21,7 @@ class __TwigTemplate_800c1d73a892c3d549395b3921f2a8ff extends Twig_Template
         echo "<div class=\"row\">
   <div class=\"col-lg-6\">
     <div class=\"input-group\">
-      <input type=\"text\" class=\"form-control\" id=\"result\" value=\"";
+      <input type=\"text\" class=\"form-control\" id=\"result\" value=\"http://estru.me/";
         // line 5
         if (isset($context["shortened"])) { $_shortened_ = $context["shortened"]; } else { $_shortened_ = null; }
         echo twig_escape_filter($this->env, $_shortened_, "html", null, true);

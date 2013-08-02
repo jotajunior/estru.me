@@ -130,7 +130,7 @@ class Shortener
 				return $this->codeToInt();
 				break;
 			default:
-				throw new Exception("You must set a code or int to convert first.");
+				throw new \Exception("You must set a code or int to convert first.");
 				break;
 		}
 	}
