@@ -13,7 +13,10 @@ set_include_path(ROOT_PATH);
 spl_autoload_register(
     function($className)
     {
-    	$file = ROOT_PATH.'src/'.str_replace(array('\\', '_'), '/', $className).'.php';
-    	require_once "{$file}";
+		$blacklist = array("Estrume\Model\PDO");
+		if (!in_array($className, $blacklist) ) {
+	    	$file = ROOT_PATH.'src/'.str_replace(array('\\', '_'), '/', $className).'.php';
+    		require_once "{$file}";
+    	}
     }
 );

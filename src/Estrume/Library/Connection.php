@@ -15,7 +15,7 @@ class Connection extends \PDO
 				$dsn .= ":dbname=".Config\Database::dbname;
 				$dsn .= ";host=".Config\Database::host;
 
-				$dbh = parent::__construct( $dsn, Config\Database::host, Config\Database::password );
+				$dbh = parent::__construct( $dsn, Config\Database::user, Config\Database::password );
 				self::$handle = $dbh;
 
 				return self::$handle;

@@ -4,8 +4,8 @@ namespace Estrume\Config;
 class Database
 {
 	const provider = "mysql";
-	const host = "127.0.0.1";
+	const host = "localhost";
 	const user = "root";
-	const password = "kjkszpj";
+	const password = "Fropme-2012";
 	const dbname = "Estrume";
 }
