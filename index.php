@@ -1,6 +1,7 @@
 <?php
 require 'vendor/autoload.php';
 require('bootstrap.php');
+
 /**
  * Step 1: Require the Slim Framework
  *
@@ -13,7 +14,7 @@ require('bootstrap.php');
 
 
 
-$a = new \Estrume\Model\Link();
+$a = new \Estrume\Controller\Link();
 /**
  * Step 2: Instantiate a Slim application
  *
