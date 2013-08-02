@@ -1,9 +1,14 @@
 {% include 'header.html' %}
+<div class="container col-offset-4">
 <div class="row">
   <div class="col-lg-6">
+    <img src="http://estru.me/src/Estrume/View/assets/images/estruminho.png" />
+      <h4>HUEHUEHUEHUEHUE BR BR BR</h4>
     <div class="input-group">
-      <input type="text" class="form-control" id="result" value="http://estru.me/{{shortened}}">
+      <input type="text" onclick="this.focus();this.select()" class="form-control input-large" id="result" value="http://estru.me/{{shortened}}" readonly>
+      
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
 </div><!-- /.row -->
+</div>
 {% include 'footer.html' %}

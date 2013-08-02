@@ -6,6 +6,6 @@ class Database
 	const provider = "mysql";
 	const host = "localhost";
 	const user = "root";
-	const password = "Fropme-2012";
+	const password = "";
 	const dbname = "Estrume";
 }

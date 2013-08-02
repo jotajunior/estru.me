@@ -14,7 +14,8 @@ $app->get('/', function () use ($linkController) {
 
 $app->post('/shorten', function () use ($linkController, $app) {
 	$url = $app->request()->post('url');
-    echo $linkController->shorten($url);
+	if (!empty($url))
+	    echo $linkController->shorten($url);
 });
 
 $app->get('/:code', function ($code) use ($linkController) {
@@ -22,3 +23,16 @@ $app->get('/:code', function ($code) use ($linkController) {
 });
 
 $app->run();
+
+/*
+RewriteEngine On
+
+# Some hosts may require you to use the `RewriteBase` directive.
+# If you need to use the `RewriteBase` directive, it should be the
+# absolute physical path to the directory that contains this htaccess file.
+#
+RewriteBase /var/www/vendor/slim/slim/
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ /index.php [QSA,L]
+*/

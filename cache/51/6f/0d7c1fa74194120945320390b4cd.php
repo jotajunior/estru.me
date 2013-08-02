@@ -21,8 +21,13 @@ class __TwigTemplate_516f0d7c1fa74194120945320390b4cd extends Twig_Template
   <head>
     <title>estru.me - o encurtador mais sujo da internê</title>
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-  </head>
-  <body>
+    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">
+\t<style type='text/css'>
+\t\tbody { margin: 0px; padding: 0px; }
+\t\t.container { margin: 0 auto; padding: 2px; border-radius: 10px; margin-top: 2px; }
+\t</style>
+\t</head>
+  <body onload=\"document.shorten.url.focus();\">
   <div class=\"navbar\">
   <a class=\"navbar-brand\" href=\"#\">estru.me</a>
   <ul class=\"nav navbar-nav\">
@@ -40,6 +45,6 @@ class __TwigTemplate_516f0d7c1fa74194120945320390b4cd extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  33 => 12,  21 => 2,  19 => 1,);
+        return array (  19 => 1,);
     }
 }

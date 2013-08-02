@@ -1,14 +1,18 @@
 {% include 'header.html' %}
-<form action="/estru.me/index.php/shorten" method="POST">
+<div class="container col-offset-4">
+<form action="http://estru.me/shorten" method="POST" name="shorten">
 <div class="row">
   <div class="col-lg-6">
+  <img src="http://estru.me/src/Estrume/View/assets/images/estruminho.png" />
+      <h4>ESTRUMINHO NÃO GOSTA DESSA URL GRANDE</h4>
     <div class="input-group">
-      <input type="text" class="form-control" id="url" name="url">
+      <input type="text" class="form-control input-large" id="url" name="url">
       <span class="input-group-btn">
-        <input class="btn btn-default" type="submit" id="sender" value="Encurtar!"/>
+        <input class="btn btn-default input-large" type="submit" id="sender" value="Encurtar!"/>
       </span>
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
 </div><!-- /.row -->
 </form>
+</div>
 {% include 'footer.html' %}
