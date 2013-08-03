@@ -104,7 +104,7 @@ class Link
 			return false;
 		}
 		
-		return $url;
+		return $filtered_url;
 	}
 	
 	private function saveUrl($url)
