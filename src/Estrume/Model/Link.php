@@ -54,6 +54,10 @@ class Link
 	public function shorten($url)
 	{
 		$url = $this->filterUrl($url);
+		
+		if (!$url) 
+			return false;
+
 		$id = $this->saveUrl($url);
 		
 		if($id) {
