@@ -71,12 +71,12 @@ class Link
 
 	private function startsWithHttp($url)
 	{
-		return substr($url, 0, 7) === "http://";
+		return substr(trim(strtolower($url)), 0, 7) === "http://";
 	}
 	
 	private function startsWithHttps($url)
 	{
-		return substr($url, 0, 8) === "https://";
+		return substr(trim(strtolower($url)), 0, 8) === "https://";
 	}
 
 	private function checkForUrlScheme($url)
