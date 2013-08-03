@@ -83,12 +83,19 @@ class Link
 		return $url;
 	}
 
+	private function itsMine($url)
+	{
+		$parsed_url = parse_url($url);
+		
+		return $parsed_url['host'] == "estru.me";
+	}
+
 	private function filterUrl($url)
 	{
 		$url = $this->checkForUrlScheme($url);
 		$filtered_url = filter_var($url, FILTER_VALIDATE_URL);
 		
-		if ($filtered_url === false) {
+		if ($filtered_url === false || $this->itsMine($url)) {
 			throw new \Exception("Invalid url.");
 			return false;
 		}
