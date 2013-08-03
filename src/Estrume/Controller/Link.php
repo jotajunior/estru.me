@@ -30,7 +30,8 @@ class Link
 	public function redirect($code)
 	{
 		$url = $this->model->getOriginal($code);
-		echo $this->view->render("redirect/index.html", array("url" => $url));
+		if ($url != false)
+			echo $this->view->render("redirect/index.html", array("url" => $url));
 	}
 	
 	public function about()

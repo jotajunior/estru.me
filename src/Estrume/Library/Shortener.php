@@ -88,7 +88,12 @@ class Shortener
 
 		foreach ( $code as $item ) {
 			$item = (string) $item;
-			$sequence[] = array_search( $item, $chars, true );
+			$key = array_search( $item, $chars, true );
+			
+			if ($key === false)
+				return false;
+			
+			$sequence[] = $key;
 		}
 		
 		return $sequence;

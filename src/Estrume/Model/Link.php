@@ -45,6 +45,9 @@ class Link
 	public function getOriginal($code)
 	{
 		$id = $this->shortener->code($code)->convert();
+		
+		if (!$id) return false;
+
 		return $this->getUrlById($id);
 	}
 	
