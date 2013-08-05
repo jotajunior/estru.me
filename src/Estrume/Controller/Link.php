@@ -38,4 +38,9 @@ class Link
 	{
 		echo $this->view->render("about/index.html", array());
 	}
+	
+	public function checkForHits($ip)
+	{
+		return $this->model->checkForHits($ip);
+	}
 }
