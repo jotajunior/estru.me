@@ -20,7 +20,7 @@ class __TwigTemplate_59c5f124fcab9dfca460f88da44c5c31 extends Twig_Template
         // line 2
         echo "<div class=\"container col-offset-4\">
 <form action=\"http://estru.me/shorten\" method=\"POST\" name=\"shorten\">
-<div class=\"row\">
+<div class=\"row\" id=\"indexrow\">
   <div class=\"col-lg-6\">
   <img src=\"http://estru.me/src/Estrume/View/assets/images/estruminho.png\" />
       <h4>ESTRUMINHO NÃO GOSTA DESSA URL GRANDE</h4>
