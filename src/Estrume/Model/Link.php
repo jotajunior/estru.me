@@ -54,7 +54,7 @@ class Link
 	public function shorten($url)
 	{
 		$url = $this->filterUrl($url);
-		
+
 		if (!$url) 
 			return false;
 
@@ -106,7 +106,25 @@ class Link
 		
 		return $filtered_url;
 	}
-	
+
+	public function checkForHits($ip)
+	{
+		$number_of_hits = apc_fetch($ip);
+
+		if ($number_of_hits === false) {
+			apc_store($ip, 1, 3600);
+			$to_compare = 1;
+		} else {
+			apc_inc($ip);
+			$to_compare = $number_of_hits + 1;
+		}
+		
+		if ($to_compare >= 1000)
+			return false;
+		
+		return true;
+	}
+
 	private function saveUrl($url)
 	{
 		$sql = "INSERT INTO `Links`(url) VALUES (:url)";
