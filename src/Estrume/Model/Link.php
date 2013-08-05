@@ -125,6 +125,7 @@ class Link
 		return true;
 	}
 
+
 	private function saveUrl($url)
 	{
 		$sql = "INSERT INTO `Links`(url) VALUES (:url)";
