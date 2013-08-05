@@ -114,7 +114,7 @@ class Shortener
 	
 	private function codeToInt()
 	{
-		$code = str_split( &$this->code );
+		$code = str_split( $this->code );
 		$chars = &self::$chars;
 		$c = &self::$c;
 		
