@@ -7,6 +7,8 @@ use Estrume\Config as Config;
 class Link
 {
         private $model;
+        private $loader;
+        private $view;
 
         public function __construct()
         {
@@ -15,28 +17,36 @@ class Link
                 $this->view = new \Twig_Environment($this->loader, array('cache' => Config\Path::cache, 'debug' => false));
         }
 
-        public function index()
+		public function __call($method, $arguments)
+		{
+			try
+			{
+				call_user_func_array(array($this, $method), $arguments);
+			} catch (\Exception $exception) {
+				echo $exception->getMessage() . PHP_EOL;
+			}
+		}
+
+        protected function index()
         {
-                echo $this->view->render("shortener/index.html", array());
+                echo $this->view->render("shortener/index.html");
         }
 
-        public function shorten($url, $ip)
+        protected function shorten($url, $ip)
         {
-                if ($this->model->checkForHits($ip)) {
-                        $shortened = $this->model->shorten($url);
-                        echo $this->view->render("shortener/result.html", array("shortened" => $shortened));
-                }
+                $this->model->checkForHits($ip);
+                $shortened = $this->model->shorten($url);
+            	echo $this->view->render("shortener/result.html", array("shortened" => $shortened));
         }
 
-        public function redirect($code)
+        protected function redirect($code)
         {
                 $url = $this->model->getOriginal($code);
-                if ($url != false)
-                        echo $this->view->render("redirect/index.html", array("url" => $url));
+                echo $this->view->render("redirect/index.html", array("url" => $url));
         }
 
-        public function about()
+        protected function about()
         {
-                echo $this->view->render("about/index.html", array());
+                echo $this->view->render("about/index.html");
         }
 }
