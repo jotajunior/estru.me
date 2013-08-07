@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 
 use \Estrume\Controller as Controller;
 
-$app = new \Slim\Slim(array("debug"=>true));
+$app = new \Slim\Slim(array('debug' => false));
 
 $linkController = new Controller\Link();
 
