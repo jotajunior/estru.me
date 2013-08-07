@@ -12,7 +12,7 @@ class Link
         {
                 $this->model = new Model\Link();
                 $this->loader = new \Twig_Loader_Filesystem(Config\Path::template);
-                $this->view = new \Twig_Environment($this->loader, array('cache' => Config\Path::cache, 'debug'=>true));
+                $this->view = new \Twig_Environment($this->loader, array('cache' => Config\Path::cache, 'debug' => false));
         }
 
         public function index()
