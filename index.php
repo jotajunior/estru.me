@@ -16,8 +16,7 @@ $app->post('/shorten', function () use ($linkController, $app) {
         $url = $app->request()->post('url');
         $ip = $app->request()->getIp();
 
-        if (!empty($url))
-            echo $linkController->shorten($url, $ip);
+        $linkController->shorten($url, $ip);
 });
 
 $app->get('/:code', function ($code) use ($linkController) {

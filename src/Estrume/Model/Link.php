@@ -32,12 +32,14 @@ class Link
                 $sth = $this->db->prepare($sql);
                 $sth->bindParam(":id", $id, \PDO::PARAM_INT);
 
-				$sth->execute() or throw new \Exception("We couldn't fetch your link.");
+				if (!$sth->execute()) throw new \Exception("We couldn't fetch your link.");
 
                 $row = $sth->fetch(\PDO::FETCH_ASSOC);
 
-                if (isset($row['url']))
-                	return $row['url'];
+                if (isset($row["url"]))
+                	return $row["url"];
+                else
+                	throw new \Exception("There is no URL assigned to this code.");
         }
 
         public function getOriginal($code)
@@ -46,8 +48,9 @@ class Link
                 return $this->getUrlById($id);
         }
 
-        public function shorten($url)
+        public function shorten($url, $ip)
         {
+        		$this->checkForHits($ip);
                 $url = $this->filterUrl($url);
                 $id = $this->saveUrl($url);
 
@@ -76,16 +79,18 @@ class Link
         {
                 $parsed_url = parse_url($url);
 
-                return $parsed_url['host'] == "estru.me";
+                return $parsed_url["host"] == "estru.me";
         }
 
 		private function removeTags($url)
 		{
-			return htmlspecialchars(strip_tags(trim(strtolower($url))), ENT_QUOTES, 'UTF-8');
+			return htmlspecialchars(strip_tags(trim(strtolower($url))), ENT_QUOTES, "UTF-8");
 		}
 
         private function filterUrl($url)
         {
+        		if (empty($url)) throw new \Exception("You must provide a URL.");
+
         		$url = $this->removeTags($url);
                 $url = $this->checkForUrlScheme($url);
                 $filtered_url = filter_var($url, FILTER_VALIDATE_URL);
@@ -96,7 +101,7 @@ class Link
                 return $filtered_url;
         }
 
-        public function checkForHits($ip)
+        private function checkForHits($ip)
         {
                 $number_of_hits = apc_fetch($ip);
 
@@ -118,8 +123,12 @@ class Link
                 $sth = $this->db->prepare($sql);
                 $sth->bindParam(":url", $url, \PDO::PARAM_STR);
 
-				$sth->execute() or throw new \Exception("We couldn't save your url. Sorry.");
+				if (!$sth->execute()) throw new \Exception("We couldn't save your url.");
 
-                return $this->db->lastInsertId();
+                $url_id = $this->db->lastInsertId();
+                
+                if (!$url_id) throw new \Exception("We couldn't fetch your link.");
+                
+                return $url_id;
         }
 }

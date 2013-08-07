@@ -34,8 +34,7 @@ class Link
 
         protected function shorten($url, $ip)
         {
-                $this->model->checkForHits($ip);
-                $shortened = $this->model->shorten($url);
+                $shortened = $this->model->shorten($url, $ip);
             	echo $this->view->render("shortener/result.html", array("shortened" => $shortened));
         }
 
