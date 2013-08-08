@@ -101,7 +101,7 @@ class Link
                 return $filtered_url;
         }
 
-        private function checkForHits($ip)
+        public function checkForHits($ip)
         {
                 $number_of_hits = apc_fetch($ip);
 
