@@ -84,7 +84,7 @@ class Link
 
 		private function removeTags($url)
 		{
-			return htmlspecialchars(strip_tags(trim(strtolower($url))), ENT_QUOTES, "UTF-8");
+			return htmlspecialchars(strip_tags(trim($url)), ENT_QUOTES, "UTF-8");
 		}
 
         private function filterUrl($url)
